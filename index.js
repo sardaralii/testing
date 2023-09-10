@@ -1,32 +1,83 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+// Basic CV Template in JavaScript
 
-const server = http.createServer((req, res) => {
-  // Handling the root URL '/'
-  if (req.url === '/') {
-    // Read the HTML file
-    const filePath = path.join(__dirname, 'index.html');
-    
-    fs.readFile(filePath, 'utf8', (err, data) => {
-      if (err) {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Internal Server Error');
-      } else {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(data);
-      }
-    });
-  } else {
-    // Handle other routes or files here if needed
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('Not Found');
-  }
+// Personal Information
+const fullName = "John Doe";
+const email = "john.doe@email.com";
+const phone = "123-456-7890";
+const address = "123 Main Street, City, Country";
+
+// Career Objective
+const careerObjective = "Experienced software developer seeking new opportunities.";
+
+// Education
+const education = [
+  {
+    degree: "Bachelor of Science in Computer Science",
+    school: "University of XYZ",
+    year: "2015 - 2019",
+  },
+  {
+    degree: "High School Diploma",
+    school: "ABC High School",
+    year: "2011 - 2015",
+  },
+];
+
+// Work Experience
+const workExperience = [
+  {
+    position: "Software Engineer",
+    company: "Tech Solutions Inc.",
+    year: "2019 - Present",
+    responsibilities: [
+      "Developing web applications using JavaScript, HTML, and CSS.",
+      "Collaborating with cross-functional teams to deliver projects on time.",
+      "Troubleshooting and debugging software issues.",
+    ],
+  },
+  {
+    position: "Intern",
+    company: "Software Co.",
+    year: "Summer 2018",
+    responsibilities: [
+      "Assisted senior developers in coding and testing.",
+      "Learned about software development best practices.",
+    ],
+  },
+];
+
+// Skills
+const skills = [
+  "JavaScript",
+  "HTML/CSS",
+  "React",
+  "Node.js",
+  "SQL",
+  "Git",
+];
+
+// Print CV
+console.log("Curriculum Vitae");
+console.log("=================");
+console.log("Full Name: " + fullName);
+console.log("Email: " + email);
+console.log("Phone: " + phone);
+console.log("Address: " + address);
+console.log("\nCareer Objective:");
+console.log(careerObjective);
+console.log("\nEducation:");
+education.forEach((edu) => {
+  console.log("- " + edu.degree + " at " + edu.school + " (" + edu.year + ")");
 });
-
-const port = 8080; // Use a different port, e.g., 8080
-
-server.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+console.log("\nWork Experience:");
+workExperience.forEach((exp) => {
+  console.log("- " + exp.position + " at " + exp.company + " (" + exp.year + ")");
+  console.log("  Responsibilities:");
+  exp.responsibilities.forEach((resp) => {
+    console.log("  - " + resp);
+  });
 });
-#sardar
+console.log("\nSkills:");
+skills.forEach((skill) => {
+  console.log("- " + skill);
+});
