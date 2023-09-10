@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from the Git repository
+                git url: 'https://github.com/sardaralii/testing.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Change to the cloned repository directory
+                dir('testing') {
+                    // Install project dependencies
+                    sh 'npm install'
+                }
+            }
+        }
+
+        stage('Run Application') {
+            when {
+                // Only run this stage for the 'main' branch
+                branch 'main'
+            }
+            steps {
+                // Change to the cloned repository directory
+                dir('testing') {
+                    // Run the Node.js application (assuming you have an 'index.js' file)
+                    sh 'node index.js'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            // Add post-build actions here
+        }
+        failure {
+            // Add actions to perform on failure here
+        }
+    }
+}
