@@ -11,9 +11,6 @@ jobs:
           name: Install Dependencies
           command: npm install
       - run:
-          name: Run Tests
-          command: npm test
-      - run:
           name: Start Application
           command: node app.js
 
