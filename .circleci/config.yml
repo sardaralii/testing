@@ -8,29 +8,7 @@ jobs:
       - checkout
       - run: node index.js
 
-  test:
-    docker:
-      - image: cimg/node:14
-    steps:
-      - checkout
-      - run: node index.js
-
-  deploy:
-    docker:
-      - image: cimg/node:14
-    steps:
-      - run: echo "Deploying to production server"
-
 workflows:
-  build_and_test_deploy:
+  build_only:
     jobs:
       - build
-      - test:
-          requires:
-            - build
-      - deploy:
-          requires:
-            - test
-          filters:
-            branches:
-              only: main
