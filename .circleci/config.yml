@@ -6,13 +6,13 @@ jobs:
       - image: cimg/node:3.11
     steps:
       - checkout
-      - run: node app.js
+      - run: node index.js
   test:
     docker:
       - image: cimg/node:3.11
     steps:
       - checkout
-      - run: node app.js
+      - run: node index.js
   deploy:
     docker:
       - image: cimg/node:3.11
