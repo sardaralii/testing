@@ -17,8 +17,4 @@ jobs:
           name: Start Application
           command: node app.js
 
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
+
